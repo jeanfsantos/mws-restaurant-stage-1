@@ -1,0 +1,34 @@
+{
+  "name": "udacity-restaurant",
+  "version": "0.0.1",
+  "description": "Projeto de conclusão do módulo 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npx gulp serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanfsantos/mws-restaurant-stage-1.git"
+  },
+  "keywords": [
+    "udacity",
+    "restaurant",
+    "responsive",
+    "accessibility",
+    "html5",
+    "javascript",
+    "api",
+    "mapbox"
+  ],
+  "author": "Jean Santos <jeanwfsantos@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeanfsantos/mws-restaurant-stage-1/issues"
+  },
+  "homepage": "https://github.com/jeanfsantos/mws-restaurant-stage-1#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-live-server": "0.0.31"
+  }
+}
