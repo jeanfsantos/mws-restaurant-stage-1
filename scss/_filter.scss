@@ -6,6 +6,10 @@
     display: flex;
     flex-direction: column;
     padding: 10px 0;
+
+    @include breakpoint(mobile-horizontal) {
+        flex-direction: row;
+    }
 }
 .filter-options h2 {
     color: white;
