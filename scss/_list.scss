@@ -23,7 +23,7 @@
     max-width: 100%;
 
     @include breakpoint(mobile-horizontal) {
-        max-width: 46%;
+        max-width: 45%;
     }
 
     @include breakpoint(desktop) {
