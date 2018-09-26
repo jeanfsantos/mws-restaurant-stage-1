@@ -1,15 +1,11 @@
 /* global DBHelper, L */
 
-let restaurants,
-    neighborhoods,
-    cuisines;
 var newMap;
-var markers = [];
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     initMap(); // added
     fetchNeighborhoods();
     fetchCuisines();
@@ -90,18 +86,6 @@ const initMap = () => {
 
     updateRestaurants();
 };
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
 
 /**
  * Update page and map for current restaurants.
@@ -202,13 +186,18 @@ const addMarkersToMap = (restaurants = self.restaurants) => {
     });
 
 };
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
+
+/**
+ * Register service worker
+ */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            // eslint-disable-next-line
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function (err) {
+            // eslint-disable-next-line
+            console.log('ServiceWorker registration failed: ', err);
+        });
     });
-    self.markers.push(marker);
-  });
-} */
+}
