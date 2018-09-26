@@ -1,4 +1,4 @@
-var staticCacheName = 'restaurant_app_v5';
+var staticCacheName = 'restaurant_app_v7';
 
 self.addEventListener('install', function (event) {
     event.waitUntil(
@@ -25,7 +25,7 @@ self.addEventListener('activate', function (event) {
         caches.keys().then(function (cacheNames) {
             return Promise.all(
                 cacheNames.filter(function (cacheName) {
-                    return cacheName.startsWith('wittr-') &&
+                    return cacheName.startsWith('restaurant_app_') &&
                         cacheName != staticCacheName;
                 }).map(function (cacheName) {
                     return caches.delete(cacheName);
