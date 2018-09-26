@@ -45,10 +45,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #footer {
     background-color: #444;
-    color: #aaa;
+    color: #ffffff;
     font-size: 8pt;
     letter-spacing: 1px;
     padding: 25px;
     text-align: center;
     text-transform: uppercase;
+}
+.hidden {
+    opacity: 0;
 }

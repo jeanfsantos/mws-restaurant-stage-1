@@ -1,3 +1,5 @@
+/* global DBHelper, L */
+
 let restaurants,
     neighborhoods,
     cuisines;
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 const fetchNeighborhoods = () => {
     DBHelper.fetchNeighborhoods((error, neighborhoods) => {
         if (error) { // Got an error
-            console.error(error);
+            console.error(error); // eslint-disable-line
         } else {
             self.neighborhoods = neighborhoods;
             fillNeighborhoodsHTML();
@@ -46,7 +48,7 @@ const fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
 const fetchCuisines = () => {
     DBHelper.fetchCuisines((error, cuisines) => {
         if (error) { // Got an error!
-            console.error(error);
+            console.error(error); // eslint-disable-line
         } else {
             self.cuisines = cuisines;
             fillCuisinesHTML();
@@ -77,8 +79,8 @@ const initMap = () => {
         zoom: 12,
         scrollWheelZoom: false
     });
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token=pk.eyJ1IjoiamVhbndmc2FudG9zIiwiYSI6ImNqbWd2cW00YjBvNWozdXFwd3A0Z2d3ZDcifQ.2ukrN4TYV2LpxWHFh9p6dg', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
+        mapboxToken: 'pk.eyJ1IjoiamVhbndmc2FudG9zIiwiYSI6ImNqbWd2cW00YjBvNWozdXFwd3A0Z2d3ZDcifQ.2ukrN4TYV2LpxWHFh9p6dg',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -116,7 +118,7 @@ const updateRestaurants = () => {
 
     DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
         if (error) { // Got an error!
-            console.error(error);
+            console.error(error); // eslint-disable-line
         } else {
             resetRestaurants(restaurants);
             fillRestaurantsHTML();
@@ -161,6 +163,7 @@ const createRestaurantHTML = (restaurant) => {
     const image = document.createElement('img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    image.setAttribute('alt', `image of the restaurant ${restaurant.name}`);
     li.append(image);
 
     const name = document.createElement('h1');
@@ -178,6 +181,7 @@ const createRestaurantHTML = (restaurant) => {
     const more = document.createElement('a');
     more.innerHTML = 'View Details';
     more.href = DBHelper.urlForRestaurant(restaurant);
+    more.setAttribute('aria-label', restaurant.name);
     li.append(more);
 
     return li;
