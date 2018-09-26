@@ -1,7 +1,9 @@
+/* global L */
+
 /**
  * Common database helper functions.
  */
-class DBHelper {
+class DBHelper { // eslint-disable-line
 
     /**
    * Database URL.
@@ -147,34 +149,32 @@ class DBHelper {
     }
 
     /**
-   * Restaurant image URL.
-   */
+     * Restaurant image URL.
+     */
     static imageUrlForRestaurant(restaurant) {
-        return (`/img/${restaurant.photograph}`);
+        const [name, ext] = restaurant.photograph.split('.');
+        return (`/dist/${name}-320px.${ext}`);
+    }
+
+    /**
+     * Generate name of different size of images
+     */
+    static imageSrcset(restaurant) {
+        const [name, ext] = restaurant.photograph.split('.');
+        return `/dist/${name}-320px.${ext} 400w, /dist/${name}-640px.${ext} 640w, /dist/${name}-800px.${ext} 800w `;
     }
 
     /**
    * Map marker for a restaurant.
    */
-    static mapMarkerForRestaurant(restaurant, map) {
+    static mapMarkerForRestaurant(restaurant, map) { // eslint-disable-line
     // https://leafletjs.com/reference-1.3.0.html#marker
         const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
             {title: restaurant.name,
                 alt: restaurant.name,
                 url: DBHelper.urlForRestaurant(restaurant)
             });
-        marker.addTo(newMap);
+        marker.addTo(newMap); // eslint-disable-line
         return marker;
     }
-    /* static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  } */
-
 }

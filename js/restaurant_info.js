@@ -1,12 +1,11 @@
 /* global DBHelper, L */
 
-let restaurant;
 var newMap;
 
 /**
  * Initialize map as soon as the page is loaded.
  */
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     initMap();
 });
 
@@ -91,7 +90,8 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img';
     image.src = DBHelper.imageUrlForRestaurant(restaurant);
-    image.setAttribute('alt', `image of the restaurant ${restaurant.name}`);
+    image.srcset = DBHelper.imageSrcset(restaurant);
+    image.setAttribute('alt', `Restaurant ${restaurant.name}`);
 
     const cuisine = document.getElementById('restaurant-cuisine');
     cuisine.innerHTML = restaurant.cuisine_type;
@@ -186,7 +186,7 @@ const fillBreadcrumb = (restaurant=self.restaurant) => {
 const getParameterByName = (name, url) => {
     if (!url)
         url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
+    name = name.replace(/[\[\]]/g, '\\$&'); // eslint-disable-line
     const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
         results = regex.exec(url);
     if (!results)
