@@ -8,7 +8,8 @@
     "serve": "npx gulp serve",
     "sass": "npx gulp sass:watch",
     "images": "npx gulp images",
-    "build": "npm run images && npx gulp sass && npm run serve"
+    "build": "npm run lint && npm run images && npx gulp sass && npm run serve",
+    "lint": "npx eslint js"
   },
   "repository": {
     "type": "git",
