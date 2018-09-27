@@ -1,32 +1,39 @@
-# Mobile Web Specialist Certification Course
----
-#### _Three Stage Course Material Project - Restaurant Reviews_
+# Avaliação de restaurantes
 
-## Project Overview: Stage 1
+## Índice
 
-For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
+-   [Visão geral do projeto](#visão-geral-do-projeto)
+-   [Especificações](#especificações)
+-   [Requisitos](#requisitos)
+-   [Instalar e executar](#instalar-e-executar)
+-   [Recursos usado](#recursos-usado)
 
-### Specification
+## Visão geral do projeto
 
-You have been provided the code for a restaurant reviews website. The code has a lot of issues. It’s barely usable on a desktop browser, much less a mobile device. It also doesn’t include any standard accessibility features, and it doesn’t work offline at all. Your job is to update the code to resolve these issues while still maintaining the included functionality. 
+Para os projetos do Avaliação de restaurantes, você vai converter gradualmente uma página da web estática em uma aplicação web pronta para dispositivos móveis. Na Fase 1, você vai converter um design estático que não oferece acessibilidade em um design que seja responsivo em telas de tamanhos diferentes e acessível para uso no leitor de tela. Além disso, você vai começar a convertê-lo em um aplicativo web progressivo (PWA) armazenando alguns ativos em cache para uso offline.
 
-### What do I do from here?
+## Especificações
 
-1. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer. 
+Você vai receber o código de um site de avaliação de restaurantes. O código tem vários problemas. Quase não dá para usar em um navegador de computador, que dirá em um dispositivo móvel. Além disso, ele não tem nenhum recurso de acessibilidade padrão e não funciona offline. Sua tarefa é modificar o código e resolver esses problemas mantendo sua funcionalidade original.
 
-In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
+## Requisitos
 
-2. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
-3. Explore the provided code, and start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
-4. Write code to implement the updates to get this site on its way to being a mobile-ready website.
+Torne o site fornecido totalmente responsivo. Todos os elementos da página devem ser utilizáveis e estar visíveis em qualquer tamanho de tela, incluindo computador, tablet e outros dispositivos móveis. As imagens não devem se sobrepor, e os elementos da página devem se adaptar quando a tela é muito pequena para exibi-los lado a lado.
 
-## Leaflet.js and Mapbox:
+## Instalar e executar
 
-This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information. 
+Para executar o projeto basta fazer download ou clonar o projeto usando o git. Acesse o diretorio do projeto e executa o comando `npm i` para instalar as dependencias. Para rodar o projeto execute o comando `npm build`, feito isso abre o browser e acesse http://localhost:3001.
 
-### Note about ES6
+```sh
+$ git clone https://github.com/jeanfsantos/mws-restaurant-stage-1.git
+$ cd mws-restaurant-stage-1
+$ npm i
+$ npm run build
+```
 
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
+## Recursos usado
 
-
-
+-   [leafletjs](https://leafletjs.com/) com [Mapbox](https://www.mapbox.com/) para renderizar o mapa.
+-   [Eslint](https://eslint.org/) para controle da qualidade do código.
+-   [Sass](https://sass-lang.com/) para estilizar a página e criar responsividade.
+-   [Gulp](https://gulpjs.com/) para executar as tarefas de compilar o css, criar imagens responsivos.
